@@ -1,0 +1,62 @@
+version: "3.4"
+services:
+  rabbitmq:
+    container_name: rabbitmq
+    image: "rabbitmq:3-alpine"
+    ports:
+      - "5672:5672"
+    restart: unless-stopped
+  heimdalld:
+    build: &ref_0
+      args:
+        UPSTREAM_VERSION: v0.2.1-mainnet
+      context: ./build/heimdall
+      dockerfile: Dockerfile
+    volumes:
+      - "heimdall:/root/.heimdalld"
+    ports:
+      - "36656:26656"
+      - "36657:26657"
+    depends_on:
+      - rabbitmq
+    environment:
+      - MONIKER=DAPPNodler
+      - SNAPSHOT_DATE=2021-03-19
+      - BOOTSTRAP=1
+    restart: unless-stopped
+    image: "heimdalld.polygon.public.dappnode.eth:0.1.0"
+  heimdallr:
+    environment:
+      - REST_SERVER=1
+    build: *ref_0
+    volumes:
+      - "heimdall:/root/.heimdalld"
+    ports:
+      - "1317:1317"
+    depends_on:
+      - heimdalld
+    restart: unless-stopped
+    image: "heimdallr.polygon.public.dappnode.eth:0.1.0"
+  bor:
+    build:
+      args:
+        UPSTREAM_VERSION: v0.2.6
+      context: ./build/bor
+      dockerfile: Dockerfile
+    environment:
+      - SNAPSHOT_DATE=2021-03-19
+      - BOOTSTRAP=1
+    volumes:
+      - "bor:/datadir"
+    ports:
+      - "10545:8545"
+      - "10546:8546"
+      - "40303:30303"
+      - "40303:30303/udp"
+    depends_on:
+      - heimdallr
+    restart: unless-stopped
+    image: "bor.polygon.public.dappnode.eth:0.1.0"
+volumes:
+  heimdall: {}
+  bor: {}
