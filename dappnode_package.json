@@ -1,18 +1,15 @@
 {
-  "name": "polygon.public.dappnode.eth",
+  "name": "polygon-mumbai.public.dappnode.eth",
   "version": "0.1.0",
-  "description": "",
+  "description": "Polygon is a protocol and a framework for building and connecting Ethereum-compatible blockchain networks. Aggregating scalable solutions on Ethereum supporting a multi-chain Ethereum ecosystem.",
   "type": "service",
-  "author": "MysticRyuujin (https://github.com/MysticRyuujin)",
-  "contributors": [
-    "androolloyd <opensource@andrewredden.com> (https://github.com/androolloyd)",
-    "golem-factory (https://github.com/golemfactory)"
-  ],
+  "author": "Tobias Thiele (https://github.com/creazy231)",
+  "contributors": [],
   "categories": [
     "Developer tools", "Blockchain", "Communications"
   ],
   "keywords": [
-    "golem", "golemfactory"
+    "qwellcode", "polygon", "mumbai"
   ],
   "globalEnvs": {
     "all": true
@@ -21,11 +18,11 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/androolloyd/dappnode-golem-node"
+    "url": "https://github.com/creazy231/dappnode-polygon-mumbai"
   },
   "links": {
     "homepage": "https://polygon.technology/",
-    "gateway": "http://bors.polygon.public.dappnode:56657"
+    "explorer": "https://mumbai.polygonscan.com/"
   },
   "license": "GPL v3"
 }
