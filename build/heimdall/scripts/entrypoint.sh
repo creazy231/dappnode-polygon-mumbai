@@ -30,7 +30,7 @@ then
     # ETH1
     sed -i "s#^eth_rpc_url.*#eth_rpc_url = \"https://goerli.infura.io/v3/f1adf5ae200747339faa560c2fa3c975\"#" heimdall-config.toml
     # RABBITMQ
-    sed -i "s#^amqp_url.*#amqp_url = \"amqp://guest:guest@rabbitmq:5672\"#" heimdall-config.toml
+    sed -i "s#^amqp_url.*#amqp_url = \"amqp://guest:guest@rabbitmq:6672\"#" heimdall-config.toml
 fi
 
 echo "$BOOTSTRAP"

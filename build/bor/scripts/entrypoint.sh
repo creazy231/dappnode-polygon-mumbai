@@ -51,7 +51,7 @@ bor \
     --syncmode=full
     --miner.gaslimit=200000000 \
     --miner.gastarget=20000000 \
-    --bor.heimdall=http://heimdallr:1317 \
+    --bor.heimdall=http://heimdallr:2317 \
     --http \
     --http.addr=0.0.0.0 \
     --http.port=8545 \
@@ -63,4 +63,4 @@ bor \
     --ws.port=8546 \
     --ws.api=eth,net,web3,bor \
     --ws.origins="*" \
-    --bootnodes=enode://320553cda00dfc003f499a3ce9598029f364fbb3ed1222fdc20a94d97dcc4d8ba0cd0bfa996579dcc6d17a534741fb0a5da303a90579431259150de66b597251@54.147.31.250:30303
+    --bootnodes=enode://320553cda00dfc003f499a3ce9598029f364fbb3ed1222fdc20a94d97dcc4d8ba0cd0bfa996579dcc6d17a534741fb0a5da303a90579431259150de66b597251@54.147.31.250:30303,enode://f0f48a8781629f95ff02606081e6e43e4aebd503f3d07fc931fad7dd5ca1ba52bd849a6f6c3be0e375cf13c9ae04d859c4a9ae3546dc8ed4f10aa5dbb47d4998@34.226.134.117:30303
