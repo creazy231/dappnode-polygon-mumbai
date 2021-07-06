@@ -48,10 +48,10 @@ bor \
     --maxpeers=200 \
     --datadir=${BOR_HOME} \
     --networkid=80001 \
-    --syncmode=full
+    --syncmode=full \
     --miner.gaslimit=200000000 \
     --miner.gastarget=20000000 \
-    --bor.heimdall=http://heimdallr:2317 \
+    --bor.heimdall=http://heimdallr:1317 \
     --http \
     --http.addr=0.0.0.0 \
     --http.port=8545 \

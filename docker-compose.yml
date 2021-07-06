@@ -24,7 +24,7 @@ services:
       - SNAPSHOT_DATE=2021-03-19
       - BOOTSTRAP=1
     restart: unless-stopped
-    image: "heimdalld.polygon-mumbai.public.dappnode.eth:0.1.0"
+    image: "heimdalld.polygon-mumbai.public.dappnode.eth:0.1.1"
   heimdallr:
     environment:
       - REST_SERVER=1
@@ -36,7 +36,7 @@ services:
     depends_on:
       - heimdalld
     restart: unless-stopped
-    image: "heimdallr.polygon-mumbai.public.dappnode.eth:0.1.0"
+    image: "heimdallr.polygon-mumbai.public.dappnode.eth:0.1.1"
   bor:
     build:
       args:
@@ -56,7 +56,7 @@ services:
     depends_on:
       - heimdallr
     restart: unless-stopped
-    image: "bor.polygon-mumbai.public.dappnode.eth:0.1.0"
+    image: "bor.polygon-mumbai.public.dappnode.eth:0.1.1"
 volumes:
   heimdall: {}
   bor: {}
