@@ -1,8 +1,10 @@
 {
   "name": "polygon-mumbai.public.dappnode.eth",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Polygon is a protocol and a framework for building and connecting Ethereum-compatible blockchain networks. Aggregating scalable solutions on Ethereum supporting a multi-chain Ethereum ecosystem.",
   "type": "service",
+  "chain": "ethereum",
+  "mainService": "bor",
   "author": "Tobias Thiele (https://github.com/creazy231)",
   "contributors": [],
   "categories": [
@@ -14,6 +16,7 @@
   "globalEnvs": {
     "all": true
   },
+  "architectures": ["linux/amd64"],
   "backup": [
   ],
   "repository": {
@@ -22,6 +25,7 @@
   },
   "links": {
     "homepage": "https://polygon.technology/",
+    "gateway": "http://bors.polygon.public.dappnode:8545",
     "explorer": "https://mumbai.polygonscan.com/"
   },
   "license": "GPL v3"
