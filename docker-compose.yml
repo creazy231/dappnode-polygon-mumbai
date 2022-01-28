@@ -1,24 +1,24 @@
 version: "3.4"
 services:
-  rabbitmq:
-    container_name: rabbitmq
+  rabbitmq-mumbai:
+    container_name: rabbitmq-mumbai
     image: "rabbitmq:3-alpine"
     ports:
       - "6672:5672"
     restart: unless-stopped
-  heimdalld:
+  heimdalld-mumbai:
     build: &ref_0
       args:
         UPSTREAM_VERSION: v0.2.1-mumbai
       context: ./build/heimdall
       dockerfile: Dockerfile
     volumes:
-      - "heimdall:/root/.heimdalld"
+      - "heimdall-mumbai:/root/.heimdalld"
     ports:
       - "46656:26656"
       - "46657:26657"
     depends_on:
-      - rabbitmq
+      - rabbitmq-mumbai
     environment:
       - MONIKER=DAPPNodler
       - >-
@@ -26,21 +26,21 @@ services:
       - BOOTSTRAP=1
       - "ETH1_RPC_URL=http://fullnode.dappnode:8545"
     restart: unless-stopped
-    image: "heimdalld.polygon-mumbai.public.dappnode.eth:0.1.2"
-  heimdallr:
+    image: "heimdalld-mumbai.polygon-mumbai.public.dappnode.eth:0.1.2"
+  heimdallr-mumbai:
     environment:
       - REST_SERVER=1
       - "ETH1_RPC_URL=http://fullnode.dappnode:8545"
     build: *ref_0
     volumes:
-      - "heimdall:/root/.heimdalld"
+      - "heimdall-mumbai:/root/.heimdalld"
     ports:
       - "2317:1317"
     depends_on:
-      - heimdalld
+      - heimdalld-mumbai
     restart: unless-stopped
-    image: "heimdallr.polygon-mumbai.public.dappnode.eth:0.1.2"
-  bor:
+    image: "heimdallr-mumbai.polygon-mumbai.public.dappnode.eth:0.1.2"
+  bor-mumbai:
     build:
       args:
         UPSTREAM_VERSION: v0.2.9
@@ -51,16 +51,16 @@ services:
         SNAPSHOT_URL=https://matic-blockchain-snapshots.s3-accelerate.amazonaws.com/matic-mainnet/bor-pruned-snapshot-2021-10-11.tar.gz
       - BOOTSTRAP=1
     volumes:
-      - "bor:/datadir"
+      - "bor-mumbai:/datadir"
     ports:
       - "11545:8545"
       - "11546:8546"
       - "50303:30303"
       - "50303:30303/udp"
     depends_on:
-      - heimdallr
+      - heimdallr-mumbai
     restart: unless-stopped
-    image: "bor.polygon-mumbai.public.dappnode.eth:0.1.2"
+    image: "bor-mumbai.polygon-mumbai.public.dappnode.eth:0.1.2"
 volumes:
-  heimdall: {}
-  bor: {}
+  heimdall-mumbai: {}
+  bor-mumbai: {}

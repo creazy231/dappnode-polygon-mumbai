@@ -26,11 +26,11 @@ then
     sed -i "s#^seeds.*#seeds = \"${BOOTNODES:-"ec0b7ee065727193b752d6bdd15923606c99cec7@162.55.210.19:26656,4cd60c1d76e44b05f7dfd8bab3f447b119e87042@54.147.31.250:26656,b18bbe1f3d8576f4b73d9b18976e71c65e839149@34.226.134.117:26656"}\"#" config.toml
     # heimdall-config.toml
     # BOR
-    sed -i "s#^bor_rpc_url.*#bor_rpc_url = \"http://bor:8545\"#" heimdall-config.toml
+    sed -i "s#^bor_rpc_url.*#bor_rpc_url = \"http://bor-mumbai:8545\"#" heimdall-config.toml
     # ETH1
     sed -i "s#^eth_rpc_url.*#eth_rpc_url = \"${ETH1_RPC_URL}\"#" heimdall-config.toml
     # RABBITMQ
-    sed -i "s#^amqp_url.*#amqp_url = \"amqp://guest:guest@rabbitmq:6672\"#" heimdall-config.toml
+    sed -i "s#^amqp_url.*#amqp_url = \"amqp://guest:guest@rabbitmq-mumbai:6672\"#" heimdall-config.toml
 fi
 
 if [ "${BOOTSTRAP}" == 1 ] && [ -n "${SNAPSHOT_URL}" ] && [ ! -f "$HEIMDALLD_HOME/bootstrapped" ];
@@ -42,7 +42,7 @@ fi
 
 if [ -n "$REST_SERVER" ];
 then
-  EXEC="heimdalld rest-server --chain-id=80001 --laddr=tcp://0.0.0.0:1317 --max-open=1000 --node=tcp://heimdalld:26657 --trust-node=true"
+  EXEC="heimdalld rest-server --chain-id=80001 --laddr=tcp://0.0.0.0:1317 --max-open=1000 --node=tcp://heimdalld-mumbai:26657 --trust-node=true"
 else
   EXEC="heimdalld start --moniker=$MONIKER --fast_sync --p2p.laddr=tcp://0.0.0.0:26656 --p2p.upnp=false --pruning=syncable --rpc.laddr=tcp://0.0.0.0:26657 --with-tendermint=true"
 fi
