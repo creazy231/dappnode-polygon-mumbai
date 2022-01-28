@@ -9,7 +9,7 @@ services:
   heimdalld-mumbai:
     build: &ref_0
       args:
-        UPSTREAM_VERSION: v0.2.4-mumbai
+        UPSTREAM_VERSION: v0.2.1-mumbai
       context: ./build/heimdall
       dockerfile: Dockerfile
     volumes:
@@ -26,7 +26,7 @@ services:
       - BOOTSTRAP=1
       - "ETH1_RPC_URL=http://fullnode.dappnode:8545"
     restart: unless-stopped
-    image: "heimdalld-mumbai.polygon-mumbai.public.dappnode.eth:0.1.2"
+    image: "heimdalld-mumbai.polygon-mumbai.public.dappnode.eth:0.1.5"
   heimdallr-mumbai:
     environment:
       - REST_SERVER=1
@@ -39,11 +39,11 @@ services:
     depends_on:
       - heimdalld-mumbai
     restart: unless-stopped
-    image: "heimdallr-mumbai.polygon-mumbai.public.dappnode.eth:0.1.2"
+    image: "heimdallr-mumbai.polygon-mumbai.public.dappnode.eth:0.1.5"
   bor-mumbai:
     build:
       args:
-        UPSTREAM_VERSION: v0.2.9
+        UPSTREAM_VERSION: v0.2.14
       context: ./build/bor
       dockerfile: Dockerfile
     environment:
@@ -60,7 +60,7 @@ services:
     depends_on:
       - heimdallr-mumbai
     restart: unless-stopped
-    image: "bor-mumbai.polygon-mumbai.public.dappnode.eth:0.1.2"
+    image: "bor-mumbai.polygon-mumbai.public.dappnode.eth:0.1.5"
 volumes:
   heimdall-mumbai: {}
   bor-mumbai: {}

@@ -17,5 +17,11 @@
       "dappnode": "Fri, 29 Oct 2021 23:11:44 GMT",
       "http://127.0.0.1:5001": "Mon, 01 Nov 2021 12:03:35 GMT"
     }
+  },
+  "0.1.5": {
+    "hash": "/ipfs/QmTtoGwN3RHUKujKaEDPtNGuccwkBMR3ozjEWY4ncx7aSp",
+    "uploadedTo": {
+      "dappnode": "Fri, 28 Jan 2022 16:54:31 GMT"
+    }
   }
 }
