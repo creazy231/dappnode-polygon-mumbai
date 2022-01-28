@@ -12,18 +12,17 @@ then
     echo "setting up initial configurations"
     cd ${BOR_HOME}
     echo "downloading launch genesis file"
-    wget https://raw.githubusercontent.com/maticnetwork/launch/master/testnet-v4/sentry/sentry/bor/genesis.json
+    wget https://raw.githubusercontent.com/maticnetwork/launch/master/testnet-v4/sentry/validator/bor/genesis.json
     echo "initializing bor with genesis file"
     bor --datadir ${BOR_HOME} init ${BOR_HOME}/genesis.json
 else
     # Check if genesis file needs updating
     cd ${BOR_HOME}
-    BERLINBLOCK=$(grep berlinBlock genesis.json | wc -l)                    # v0.2.5 Update
-    STATESYNCRERCORDS=$(grep overrideStateSyncRecords genesis.json | wc -l) # v0.2.6 Update
-    if [ ${BERLINBLOCK} == 0 ] || [ ${STATESYNCRERCORDS} == 0 ];
+    GREPSTRING=$(grep londonBlock genesis.json | wc -l) # v0-2-13 Update
+    if [ ${GREPSTRING} == 0 ];
     then
         echo "Updating Genesis File"
-        wget https://raw.githubusercontent.com/maticnetwork/launch/master/testnet-v4/sentry/sentry/bor/genesis.json -O genesis.json
+        wget https://raw.githubusercontent.com/maticnetwork/launch/master/testnet-v4/sentry/validator/bor/genesis.json
         bor --datadir ${BOR_HOME} init ${BOR_HOME}/genesis.json
     fi
 fi

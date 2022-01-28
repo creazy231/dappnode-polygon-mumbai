@@ -9,7 +9,7 @@ services:
   heimdalld-mumbai:
     build: &ref_0
       args:
-        UPSTREAM_VERSION: v0.2.1-mumbai
+        UPSTREAM_VERSION: v0.2.4-mumbai
       context: ./build/heimdall
       dockerfile: Dockerfile
     volumes:
@@ -22,7 +22,7 @@ services:
     environment:
       - MONIKER=DAPPNodler
       - >-
-        SNAPSHOT_URL=https://matic-blockchain-snapshots.s3-accelerate.amazonaws.com/matic-mainnet/heimdall-snapshot-2021-09-24.tar.gz
+        SNAPSHOT_URL=https://matic-blockchain-snapshots.s3-accelerate.amazonaws.com/matic-mumbai/heimdall-snapshot-2022-01-17.tar.gz
       - BOOTSTRAP=1
       - "ETH1_RPC_URL=http://fullnode.dappnode:8545"
     restart: unless-stopped
@@ -48,7 +48,7 @@ services:
       dockerfile: Dockerfile
     environment:
       - >-
-        SNAPSHOT_URL=https://matic-blockchain-snapshots.s3-accelerate.amazonaws.com/matic-mainnet/bor-pruned-snapshot-2021-10-11.tar.gz
+        SNAPSHOT_URL=https://matic-blockchain-snapshots.s3-accelerate.amazonaws.com/matic-mumbai/bor-fullnode-node-snapshot-2022-01-24.tar.gz
       - BOOTSTRAP=1
     volumes:
       - "bor-mumbai:/datadir"
